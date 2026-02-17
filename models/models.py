@@ -37,6 +37,8 @@ class User(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     email: Mapped[str] = mapped_column(String(50), unique=True)
     hash_password: Mapped[str] = mapped_column()
+    first_name: Mapped[str] = mapped_column(String(10))
+    last_name: Mapped[str] = mapped_column(String(20))
 
     accounts = relationship('Account', back_populates='user')
 
@@ -44,4 +46,7 @@ class User(Base):
 class Admin(Base):
     __tablename__ = 'admin'
 
-    
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+    email: Mapped[str] = mapped_column(String(50), unique=True)
+    hash_password: Mapped[str] = mapped_column()
